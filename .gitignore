@@ -1,6 +1,6 @@
 config.ini
-reddit_data.json
-reddit_data_200_400.json
+reddit_posts/reddit_data.json
+reddit_posts/reddit_data_200_400.json
 # Default ignored files
 /shelf/
 /workspace.xml
