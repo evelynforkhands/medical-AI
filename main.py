@@ -9,13 +9,10 @@ config.read("config.ini")
 CLIENT_ID = config.get("credentials", "CLIENT_ID")
 SECRET_KEY = config.get("credentials", "SECRET_KEY")
 
-print("CLIENT_ID:", CLIENT_ID)
-print("SECRET_KEY:", SECRET_KEY)
-
 
 post_number = 0
 total_posts = 200
-last_post_id = '12i121s'
+last_post_id = '12i2oy5'
 
 reddit = praw.Reddit(client_id=CLIENT_ID,
                      client_secret=SECRET_KEY,
@@ -26,7 +23,7 @@ subreddit = reddit.subreddit('all')
 query = 'medical AI'
 search_results = subreddit.search(query, limit=total_posts, sort='new', params={'after': last_post_id})
 
-filename = 'reddit_posts/400_600.json'
+filename = 'reddit_posts/600_800.json'
 posts_data = []
 
 try:
