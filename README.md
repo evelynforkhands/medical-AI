@@ -1,4 +1,4 @@
-# Reddit Posts Related to Medical AI
+# A Parser for Reddit Posts Related to Medical AI
 
 This repository contains code for a university project, aimed at uncovering people's outlook on medical AI. 
 
