@@ -28,5 +28,6 @@ To exclude completely irrelevant posts, the following criteria were used:
         [credentials]
          CLIENT_ID = your_client_id
          SECRET_KEY =  your_secret_key
+3. Install the required packages by running `pip install -r requirements.txt`.
 3. Incrementally collect the desired number of reddit posts by running `main.py` :)
 4. Run `sentiment_topics.py`, then run `sentiment.py`, then run `visualization.py` to visualize the results.
