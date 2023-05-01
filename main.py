@@ -12,7 +12,7 @@ SECRET_KEY = config.get("credentials", "SECRET_KEY")
 
 post_number = 0
 total_posts = 200
-last_post_id = '12i2oy5'
+last_post_id = '12r5a30'
 
 reddit = praw.Reddit(client_id=CLIENT_ID,
                      client_secret=SECRET_KEY,
@@ -20,10 +20,12 @@ reddit = praw.Reddit(client_id=CLIENT_ID,
 
 subreddit = reddit.subreddit('all')
 
-query = 'medical AI'
-search_results = subreddit.search(query, limit=total_posts, sort='new', params={'after': last_post_id})
+# query = '(trust OR privacy OR concern OR monitoring OR transparency OR understanding OR communicate OR machine OR personal OR need OR feel OR emotion) AND "medical AI" AND NOT "hfy" AND NOT "job" AND NOT "Femdom"'
+query = '((trust OR privacy OR concern OR monitoring OR transparency OR understanding OR communicate OR machine OR personal OR need OR feel OR emotion) AND "AI" AND ("medical" OR "healthcare" ) AND NOT "hfy" AND NOT "job" AND NOT "Femdom") OR ("AI" AND ("medical" OR "healthcare" ) AND NOT "hfy" AND NOT "job" AND NOT "Femdom")'
+search_results = subreddit.search(query, limit=total_posts, sort='new')
+params = {'after': last_post_id}
 
-filename = 'reddit_posts/600_800.json'
+filename = 'reddit_posts/new_query_2/0_200.json'
 posts_data = []
 
 try:
