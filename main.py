@@ -20,7 +20,7 @@ reddit = praw.Reddit(client_id=CLIENT_ID,
 
 subreddit = reddit.subreddit('all')
 
-# query = '(trust OR privacy OR concern OR monitoring OR transparency OR understanding OR communicate OR machine OR personal OR need OR feel OR emotion) AND "medical AI" AND NOT "hfy" AND NOT "job" AND NOT "Femdom"'
+# query = 'medical AI'
 query = '((trust OR privacy OR concern OR monitoring OR transparency OR understanding OR communicate OR machine OR personal OR need OR feel OR emotion) AND "AI" AND ("medical" OR "healthcare" ) AND NOT "hfy" AND NOT "job" AND NOT "Femdom") OR ("AI" AND ("medical" OR "healthcare" ) AND NOT "hfy" AND NOT "job" AND NOT "Femdom")'
 search_results = subreddit.search(query, limit=total_posts, sort='new')
 params = {'after': last_post_id}
