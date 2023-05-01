@@ -37,7 +37,7 @@ def preprocess_text(text):
     return words
 
 
-folder_path = "reddit_posts"
+folder_path = "reddit_posts/new_query"
 minimum_karma = 50
 
 combined_data = []
@@ -49,14 +49,16 @@ for filename in os.listdir(folder_path):
             data = json.load(file)
             combined_data.extend(data)
 
+with open('banned_words.json', 'r') as file:
+    banned_words = json.load(file)
+
 credible_data = [post for post in combined_data if post["author"]["karma"] >= minimum_karma]
 # exclude posts that are about looking for jobs/offering jobs/hiring
-credible_data = [post for post in credible_data if not any(word in post["title"].lower() for word in
-                                                           ["job", "hiring", "offer", "recruiting", "recruitment",
-                                                            "recruit", "looking for", "looking for a job",
-                                                            "looking for job"])]
+credible_data = [post for post in credible_data if not any(word in post["title"].lower() + post["text"].lower() for word in
+                                                           banned_words)]
 
 print(f"Total number of credible posts in combined dataset: {len(credible_data)}")
+print(f"Total number of comments for all credible posts: {sum([len(post['comments']) for post in credible_data])}")
 
 
 def preprocess_text(text):
@@ -67,7 +69,7 @@ def preprocess_text(text):
     stopword_extended = stopwords.words("english")
     stopword_extended.extend(
         ["http", "https", "www", "com", "org", "net", "edu", "reddit", "redditcom", "redditcomr", "redditcomrall",
-         "en"])
+         "en", "x200b", "png", "webp", "jpg", "jpeg", "gif", "html"])
     words = [word for word in words if word not in stopword_extended]
     return words
 

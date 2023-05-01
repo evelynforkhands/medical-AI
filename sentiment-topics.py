@@ -52,9 +52,12 @@ def sentiment_analysis(text):
 
 minimum_karma = 50
 
+with open('banned_words.json', 'r') as file:
+    banned_words = json.load(file)
+
 credible_data = [post for post in combined_data if post["author"]["karma"] >= minimum_karma]
 # exclude posts that are about looking for jobs/offering jobs/hiring
-data = [post for post in credible_data if not any(word in post["title"].lower() for word in ["job", "hiring", "offer", "recruiting", "recruitment", "recruit", "looking for", "looking for a job", "looking for job"])]
+data = [post for post in credible_data if not any(word in post["title"].lower() for word in banned_words)]
 
 print(f"Total number of posts in credible dataset: {len(data)}")
 # total number of comments in credible dataset
