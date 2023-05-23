@@ -109,6 +109,9 @@ explode = (0.1, 0.1, 0.1)
 plt.pie(sizes, explode=explode, labels=labels, colors=colors, autopct='%1.1f%%', shadow=True, startangle=90)
 
 plt.axis('equal')
+# save the plot as an svg
+# plot no background color
+plt.savefig("plots/sentiment_distribution.svg", transparent=True)
 
 plt.show()
 
